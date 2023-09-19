@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const userRoutes = require('./routes/user')
+const productRoutes = require('./routes/product')
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
@@ -13,6 +14,7 @@ mongoose.connection.on("open", function(ref) {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/user', userRoutes);
+app.use('/product', productRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello');
